@@ -1,9 +1,10 @@
 {
-    "name": "unigame.graphicstools.editor",
+    "name": "unigame.graphicstools.tests.editor",
     "references": [
-        "GUID:8e4577c9194c10845984cf27eb974fd1",
-        "GUID:2796129a6c23eb84a8181f62bf7332f1",
-        "GUID:47926fc4cdc8c324aa7cee5adf88df17"
+        "GUID:47926fc4cdc8c324aa7cee5adf88df17",
+        "GUID:17d32079a21b96e4fa8dd7a61420cc04",
+        "GUID:0acc523941302664db1f4e527237feb3",
+        "GUID:27619889b8ba8c24980f49ee34dbb44a"
     ],
     "includePlatforms": [
         "Editor"
