@@ -4,7 +4,7 @@
 
     public readonly struct TristimulusColor
     {
-        public static TristimulusColor White => new TristimulusColor(95.047f, 100.000f, 108.883f);
+        public static readonly TristimulusColor White = new TristimulusColor(95.047f, 100.000f, 108.883f);
         
         public const float Epsilon = 0.008856f;
         public const float Kappa   = 903.3f;
