@@ -1,2 +1,0 @@
-# UniGame.SplitTexture
-Texture Splitter
