@@ -1,4 +1,4 @@
-﻿namespace UniModules.UniGame.SplitTexture.Editor
+﻿namespace UniModules.UniGame.GraphicsTools.Editor.SplitTexture
 {
     using UnityEngine;
 

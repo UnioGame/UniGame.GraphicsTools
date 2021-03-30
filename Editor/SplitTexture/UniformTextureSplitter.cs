@@ -1,4 +1,4 @@
-﻿namespace UniModules.UniGame.SplitTexture.Editor
+﻿namespace UniModules.UniGame.GraphicsTools.Editor.SplitTexture
 {
     using System.Collections.Generic;
     using Abstract;
@@ -6,37 +6,57 @@
 
     public sealed class UniformTextureSplitter : ITextureSplitter
     {
-        public Texture2D[] SplitTexture(Texture2D source, Vector2Int maxSize)
+        public IEnumerable<Texture2D> SplitTexture(Texture2D source, Vector2Int maxSize)
         {
-            if (source == null) {
-                return null;
+            if (source == null) 
+            {
+                yield break;
             }
             
-            if (source.width > maxSize.x && source.height > maxSize.y) {
-                return SplitVerticalAndHorizontal(source, maxSize);
+            if (source.width > maxSize.x && source.height > maxSize.y) 
+            {
+                var counter = 0;
+                foreach (var texture2D in SplitVerticalAndHorizontal(source, maxSize))
+                {
+                    texture2D.name = SplitHelper.GetSplittedTextureName(counter, texture2D.name);
+                    
+                    yield return texture2D;
+                    
+                    counter++;
+                }
             }
-
-            if (source.width > maxSize.x) {
-                return SplitHorizontal(source, maxSize.x);
+            else if (source.width > maxSize.x) 
+            {
+                foreach (var texture2D in SplitHorizontal(source, maxSize.x))
+                {
+                    yield return texture2D;
+                }
             }
-
-            if (source.height > maxSize.y) {
-                return SplitVertical(source, maxSize.y);
+            else if (source.height > maxSize.y) 
+            {
+                foreach (var texture2D in SplitVertical(source, maxSize.y))
+                {
+                    yield return texture2D;
+                }
             }
-
-            return new[] {source};
+            else
+            {
+                yield return source;
+            }
         }
 
-        private Texture2D[] SplitHorizontal(Texture2D source, int maxSize)
+        private IEnumerable<Texture2D> SplitHorizontal(Texture2D source, int maxSize)
         {
             var splitCount = SplitHelper.GetSplitCount(source.width, maxSize);
-            if (splitCount > 1) {
+            if (splitCount > 1) 
+            {
                 var partWidth = Mathf.FloorToInt((float)source.width / splitCount);
                 
-                var resultArray = new Texture2D[splitCount];
-                for (var i = 0; i < splitCount; i++) {
+                for (var i = 0; i < splitCount; i++) 
+                {
                     var rect = new Rect(i * partWidth, 0.0f, partWidth, source.height);
-                    if (i == splitCount - 1) {
+                    if (i == splitCount - 1) 
+                    {
                         var commonSplitWidth = partWidth * i;
                         partWidth = source.width - commonSplitWidth;
                         rect = new Rect(commonSplitWidth, 0.0f, partWidth, source.height);
@@ -44,22 +64,21 @@
                     
                     var texture = GetTextureByRect(source, rect);
                     texture.name = SplitHelper.GetSplittedTextureName(i, source.name);
-                    resultArray[i] = texture;
+                    yield return texture;
                 }
-
-                return resultArray;
             }
-
-            return null;
+            else
+            {
+                yield return source;
+            }
         }
 
-        private Texture2D[] SplitVertical(Texture2D source, int maxSize)
+        private IEnumerable<Texture2D> SplitVertical(Texture2D source, int maxSize)
         {
             var splitCount = SplitHelper.GetSplitCount(source.height, maxSize);
             if (splitCount > 1) {
                 var partHeight = Mathf.FloorToInt((float)source.height / splitCount);
                 
-                var resultArray = new Texture2D[splitCount];
                 for (var i = 0; i < splitCount; i++) {
                     if (i == splitCount - 1) {
                         var commonSplitHeight = partHeight * i;
@@ -69,38 +88,36 @@
                     var rect = new Rect(0.0f, i * partHeight, source.width, partHeight);
                     var texture = GetTextureByRect(source, rect);
                     texture.name = SplitHelper.GetSplittedTextureName(i, source.name);
-                    resultArray[i] = texture;
+                    yield return texture;
                 }
-
-                return resultArray;
             }
-
-            return null;
+            else
+            {
+                yield return source;
+            }
         }
 
-        private Texture2D[] SplitVerticalAndHorizontal(Texture2D source, Vector2Int maxSize)
+        private IEnumerable<Texture2D> SplitVerticalAndHorizontal(Texture2D source, Vector2Int maxSize)
         {
             var splittedByWidth = SplitHorizontal(source, maxSize.x);
-            if (splittedByWidth != null) {
-                var resultList = new List<Texture2D>();
-                foreach (var texture in splittedByWidth) {
+            if (splittedByWidth != null)
+            {
+                foreach (var texture in splittedByWidth)
+                {
                     var splittedByHeight = SplitVertical(texture, maxSize.y);
-                    if(splittedByHeight != null) {
-                        resultList.AddRange(splittedByHeight);
+                    if (splittedByHeight != null)
+                    {
+                        foreach (var texture2D in splittedByHeight)
+                        {
+                            yield return texture2D;
+                        }
                     }
-                    else {
-                        resultList.Add(texture);
+                    else
+                    {
+                        yield return texture;
                     }
                 }
-
-                for (var i = 0; i < resultList.Count; i++) {
-                    resultList[i].name = SplitHelper.GetSplittedTextureName(i, source.name);
-                }
-
-                return resultList.ToArray();
             }
-
-            return null;
         }
 
         private Texture2D GetTextureByRect(Texture2D source, Rect rect)
