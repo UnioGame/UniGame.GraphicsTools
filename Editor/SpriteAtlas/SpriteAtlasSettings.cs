@@ -2,7 +2,6 @@
 {
     using System;
     using Abstract;
-    using Sirenix.OdinInspector;
     using UnityEditor;
     using UnityEngine;
 
@@ -12,55 +11,89 @@
         private const string AtlasSettingsGroup = "Sprite Atlas Settings";
         
         [SerializeField]
-        [FoldoutGroup(AtlasSettingsGroup)]
+#if ODIN_INSPECTOR
+        [Sirenix.OdinInspector.FoldoutGroup(AtlasSettingsGroup)]
+#endif
         private SpriteAtlasType _type = SpriteAtlasType.Master;
         
         [SerializeField]
-        [FoldoutGroup(AtlasSettingsGroup)]
+#if ODIN_INSPECTOR
+        [Sirenix.OdinInspector.FoldoutGroup(AtlasSettingsGroup)]
+#endif
         private bool _includeInBuild;
         
         [SerializeField]
-        [FoldoutGroup(AtlasSettingsGroup), Title("Packing")]
+#if ODIN_INSPECTOR
+        [Sirenix.OdinInspector.FoldoutGroup(AtlasSettingsGroup), Sirenix.OdinInspector.Title("Packing")]
+#endif
         private bool _allowRotation;
         
         [SerializeField]
-        [FoldoutGroup(AtlasSettingsGroup)]
+#if ODIN_INSPECTOR
+        [Sirenix.OdinInspector.FoldoutGroup(AtlasSettingsGroup)]
+#endif
         private bool _tightPacking;
 
         [SerializeField]
-        [FoldoutGroup(AtlasSettingsGroup), ValueDropdown(nameof(PaddingValues))]
+#if ODIN_INSPECTOR
+        [Sirenix.OdinInspector.FoldoutGroup(AtlasSettingsGroup), Sirenix.OdinInspector.ValueDropdown(nameof(PaddingValues))]
+#endif
         private int _padding = PaddingValues[1];
 
         [SerializeField]
-        [Title("Texture")]
-        [FoldoutGroup(AtlasSettingsGroup)]
+#if ODIN_INSPECTOR
+        [Sirenix.OdinInspector.Title("Texture")]
+        [Sirenix.OdinInspector.FoldoutGroup(AtlasSettingsGroup)]
+#endif
         private bool _readWriteEnabled = true;
+        
         [SerializeField]
-        [FoldoutGroup(AtlasSettingsGroup)]
+#if ODIN_INSPECTOR
+        [Sirenix.OdinInspector.FoldoutGroup(AtlasSettingsGroup)]
+#endif
         private bool _generateMipMaps;
+        
         [SerializeField]
-        [FoldoutGroup(AtlasSettingsGroup)]
+#if ODIN_INSPECTOR
+        [Sirenix.OdinInspector.FoldoutGroup(AtlasSettingsGroup)]
+#endif
         private bool _sRGB = true;
+        
         [SerializeField]
-        [FoldoutGroup(AtlasSettingsGroup)]
+#if ODIN_INSPECTOR
+        [Sirenix.OdinInspector.FoldoutGroup(AtlasSettingsGroup)]
+#endif
         private FilterMode _filterMode = FilterMode.Bilinear;
 
         [SerializeField]
-        [Title("Default Build Platform")]
-        [FoldoutGroup(AtlasSettingsGroup), ValueDropdown(nameof(MaxSizeValues))]
+#if ODIN_INSPECTOR
+        [Sirenix.OdinInspector.Title("Default Build Platform")]
+        [Sirenix.OdinInspector.FoldoutGroup(AtlasSettingsGroup), Sirenix.OdinInspector.ValueDropdown(nameof(MaxSizeValues))]
+#endif
         private int _maxTextureSize = MaxSizeValues[6];
 
         [SerializeField]
-        [FoldoutGroup(AtlasSettingsGroup)]
+#if ODIN_INSPECTOR
+        [Sirenix.OdinInspector.FoldoutGroup(AtlasSettingsGroup)]
+#endif
         private AtlasTextureFormat _format = AtlasTextureFormat.Automatic;
+        
         [SerializeField]
-        [FoldoutGroup(AtlasSettingsGroup)]
+#if ODIN_INSPECTOR
+        [Sirenix.OdinInspector.FoldoutGroup(AtlasSettingsGroup)]
+#endif
         private TextureImporterCompression _compression = TextureImporterCompression.Compressed;
+        
         [SerializeField]
-        [FoldoutGroup(AtlasSettingsGroup)]
+#if ODIN_INSPECTOR
+        [Sirenix.OdinInspector.FoldoutGroup(AtlasSettingsGroup)]
+#endif
         private bool _useCrunchCompression = true;
+        
         [SerializeField]
-        [FoldoutGroup(AtlasSettingsGroup)]
+#if ODIN_INSPECTOR
+        [Sirenix.OdinInspector.FoldoutGroup(AtlasSettingsGroup)]
+#endif
         [Range(0,100)]
         private int _compressionQuality = 100;
         
