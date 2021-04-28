@@ -4,13 +4,13 @@
   "displayName": "UniGame Graphics Tools",
   "description": "Graphics tools collections",
   "unity": "2019.2",
-  "version": "2021.0.7",
+  "version": "2021.0.8",
   "keywords": [
     "algorithm",
     "collections",
     "utils"
   ],
   "dependencies": {
-    "com.unigame.unicore": "2021.0.7"
+    "com.unigame.unicore": "2021.0.9"
   }
 }
