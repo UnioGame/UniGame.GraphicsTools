@@ -4,12 +4,12 @@
   "displayName": "UniGame Texture Convex Hull",
   "description": "Texture Convex Hull",
   "unity": "2019.2",
-  "version": "2020.0.62",
+  "version": "2020.0.63",
   "keywords": [
     "texture",
     "convex hull"
   ],
   "dependencies": {
-    "com.unigame.unicore": "2021.1.2"
+    "com.unigame.unicore": "2021.1.3"
   }
 }
