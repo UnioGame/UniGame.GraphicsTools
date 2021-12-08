@@ -11,12 +11,14 @@
     {
         public static void ApplySettings(this SpriteAtlas atlas, SpriteAtlasSettings settings)
         {
+            var textureSettings = settings.ImportSettings.GetTextureImporterSettings();
+            
             var atlasTextureSettings = new SpriteAtlasTextureSettings
             {
-                generateMipMaps = settings.GenerateMipMaps,
-                filterMode = settings.FilterMode,
-                readable = settings.ReadWriteEnabled,
-                sRGB = settings.SRgb
+                generateMipMaps = textureSettings.mipmapEnabled,
+                filterMode = textureSettings.filterMode,
+                readable = textureSettings.readable,
+                sRGB = textureSettings.sRGBTexture
             };
 
             var atlasPackingSettings = new SpriteAtlasPackingSettings
@@ -26,14 +28,7 @@
                 enableTightPacking = settings.TightPacking
             };
 
-            var platformSettings = new TextureImporterPlatformSettings
-            {
-                textureCompression = settings.Compression,
-                maxTextureSize = settings.MaxTextureSize,
-                format = (TextureImporterFormat)settings.Format,
-                crunchedCompression = settings.UseCrunchCompression,
-                compressionQuality = settings.CompressionQuality
-            };
+            var platformSettings = settings.ImportSettings.GetTextureImporterPlatformSettings(EditorUserBuildSettings.selectedBuildTargetGroup);
 
             atlas.SetTextureSettings(atlasTextureSettings);
             atlas.SetPackingSettings(atlasPackingSettings);
@@ -73,7 +68,7 @@
             {
                 return;
             }
-            var sprites = spritePaths.Select(spritePath => AssetDatabase.LoadAssetAtPath<Texture2D>(spritePath));
+            var sprites = spritePaths.Select(AssetDatabase.LoadAssetAtPath<Texture2D>);
             var packedAsset = sprites.ToArray();
             atlas.Remove(packedAsset);
             AssetDatabase.SaveAssets();
@@ -81,27 +76,36 @@
 
         public static bool CheckSettings(this SpriteAtlas atlas, SpriteAtlasSettings settings)
         {
-            var textureSettings     = atlas.GetTextureSettings();
+            var atlasTextureSettings     = atlas.GetTextureSettings();
             var packingSettings     = atlas.GetPackingSettings();
-            var platformSettings    = atlas.GetPlatformSettings("DefaultTexturePlatform");
             var isVariant           = atlas.isVariant;
-
+            
+            var textureSettings = settings.ImportSettings.GetTextureImporterSettings();
             var sameSettings =
-                textureSettings.generateMipMaps         == settings.GenerateMipMaps &&
-                textureSettings.filterMode              == settings.FilterMode &&
-                textureSettings.readable                == settings.ReadWriteEnabled &&
-                textureSettings.sRGB                    == settings.SRgb &&
+                atlasTextureSettings.generateMipMaps         == textureSettings.mipmapEnabled &&
+                atlasTextureSettings.filterMode              == textureSettings.filterMode &&
+                atlasTextureSettings.readable                == textureSettings.readable &&
+                atlasTextureSettings.sRGB                    == textureSettings.sRGBTexture &&
                 packingSettings.padding                 == settings.Padding &&
                 packingSettings.enableRotation          == settings.AllowRotation &&
                 packingSettings.enableTightPacking      == settings.TightPacking &&
-                platformSettings.textureCompression     == settings.Compression &&
-                platformSettings.maxTextureSize         == settings.MaxTextureSize &&
-                platformSettings.format                 == (TextureImporterFormat)settings.Format &&
-                platformSettings.crunchedCompression    == settings.UseCrunchCompression &&
-                platformSettings.compressionQuality     == settings.CompressionQuality &&
                 isVariant                               == (settings.Type == SpriteAtlasType.Variant);
 
-            return sameSettings;
+            return sameSettings && CheckPlatformSettings(atlas, settings, BuildTargetGroup.Unknown) && 
+                   CheckPlatformSettings(atlas, settings, BuildTargetGroup.Standalone) && 
+                   CheckPlatformSettings(atlas, settings, BuildTargetGroup.Android);
+        }
+
+        private static bool CheckPlatformSettings(SpriteAtlas atlas, SpriteAtlasSettings settings, BuildTargetGroup buildTargetGroup)
+        {
+            var atlasPlatformSettings = atlas.GetPlatformSettings(buildTargetGroup.ToString());
+            var platformSettings = settings.ImportSettings.GetTextureImporterPlatformSettings(buildTargetGroup);
+
+            return atlasPlatformSettings.textureCompression == platformSettings.textureCompression &&
+                   atlasPlatformSettings.maxTextureSize == platformSettings.maxTextureSize &&
+                   atlasPlatformSettings.format == platformSettings.format &&
+                   atlasPlatformSettings.crunchedCompression == platformSettings.crunchedCompression &&
+                   atlasPlatformSettings.compressionQuality == platformSettings.compressionQuality;
         }
     }
 }
