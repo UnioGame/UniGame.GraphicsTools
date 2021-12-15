@@ -45,6 +45,9 @@
         
         [SerializeField]
         [Title("Default Importer Settings"), HideLabel]
+#if ODIN_INSPECTOR
+        [FoldoutGroup(AtlasSettingsGroup), ValueDropdown(nameof(PaddingValues))]
+#endif
         public TextureImporterSettingsAdapter ImportSettings = new TextureImporterSettingsAdapter();
         
         private static readonly int[] PaddingValues = {
