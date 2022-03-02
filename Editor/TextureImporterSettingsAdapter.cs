@@ -119,7 +119,6 @@
 #if ODIN_INSPECTOR
         [TabGroup("Default")]
 #endif
-        [TabGroup("Default")]
         public TextureResizeAlgorithm ResizeAlgorithm = TextureResizeAlgorithm.Mitchell;
 
 #if ODIN_INSPECTOR
