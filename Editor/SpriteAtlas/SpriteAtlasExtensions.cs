@@ -1,4 +1,6 @@
-﻿namespace UniModules.UniGame.GraphicsTools.Editor.SpriteAtlas
+﻿using UniModules.Editor;
+
+namespace UniModules.UniGame.GraphicsTools.Editor.SpriteAtlas
 {
     using System.Linq;
     using System.Reflection;
@@ -59,6 +61,7 @@
         {
             var packedAsset = new[] { AssetDatabase.LoadAssetAtPath<Texture2D>(spritePath) };
             atlas.Remove(packedAsset);
+            atlas.SetDirty();
             AssetDatabase.SaveAssets();
         }
 
@@ -71,6 +74,7 @@
             var sprites = spritePaths.Select(AssetDatabase.LoadAssetAtPath<Texture2D>);
             var packedAsset = sprites.ToArray();
             atlas.Remove(packedAsset);
+            atlas.SetDirty();
             AssetDatabase.SaveAssets();
         }
 
