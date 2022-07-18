@@ -65,8 +65,11 @@ namespace UniGame.Rendering.Runtime.Blur.KawaseBlur
             var opaqueDesc = renderingData.cameraData.cameraTargetDescriptor;
             opaqueDesc.depthBufferBits = 0;
 
+#if UNITY_2022_1_OR_NEWER
             _targetIdentifier = _source.cameraColorTargetHandle;
-                
+#else
+            _targetIdentifier = _source.cameraColorTarget;
+#endif
             cmd.SetGlobalFloat(OffsetPropertyName, 1.5f);
             cmd.Blit(_targetIdentifier, _tempRenderTarget1, Material);
 
