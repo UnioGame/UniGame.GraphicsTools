@@ -19,7 +19,7 @@ Shader "UniGame/URP/Blur/KawaseBlur"
             #pragma target 2.0
 
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
-			#include "Assets/Taktika.Rendering/Runtime/Include/Core.hlsl"
+			#include "Assets/UniGame.Rendering/Runtime/Include/Core.hlsl"
 
             struct appdata
             {
@@ -74,5 +74,5 @@ Shader "UniGame/URP/Blur/KawaseBlur"
             ENDHLSL
         }
     }
-    CustomEditor "Taktika.Rendering.Editor.Blur.KawaseBlur.KawaseBlurShaderEditor"
+    CustomEditor "UniGame.Rendering.Editor.Blur.KawaseBlur.KawaseBlurShaderEditor"
 }

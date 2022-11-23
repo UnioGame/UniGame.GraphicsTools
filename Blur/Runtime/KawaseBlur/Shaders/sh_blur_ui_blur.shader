@@ -56,8 +56,8 @@ Shader "UniGame/URP/UI/Blur/UIKawaseBlur"
 			#pragma multi_compile_local _ UNITY_UI_ALPHACLIP
 
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
-			#include "Assets/Taktika.Rendering/Runtime/Include/Core.hlsl"
-			#include "Assets/Taktika.Rendering/Runtime/Include/UI.hlsl"
+			#include "Assets/UniGame.Rendering/Runtime/Include/Core.hlsl"
+			#include "Assets/UniGame.Rendering/Runtime/Include/UI.hlsl"
 
 			struct appdata_t
 			{
@@ -126,5 +126,5 @@ Shader "UniGame/URP/UI/Blur/UIKawaseBlur"
 			ENDHLSL
 		}
     }
-	CustomEditor "Taktika.Rendering.Editor.Blur.KawaseBlur.UIKawaseBlurShaderEditor"
+	CustomEditor "UniGame.Rendering.Editor.Blur.KawaseBlur.UIKawaseBlurShaderEditor"
 }
