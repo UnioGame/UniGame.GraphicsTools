@@ -1,4 +1,4 @@
-﻿namespace Taktika.Rendering.Runtime.Water
+﻿namespace UniGame.Rendering.Runtime.Water
 {
     using System;
     using System.Collections.Generic;

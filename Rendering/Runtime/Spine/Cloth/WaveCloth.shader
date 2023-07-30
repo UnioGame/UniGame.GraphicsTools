@@ -1,4 +1,4 @@
-﻿Shader "Taktika/Spine/SkeletonGraphics/WaveCloth"
+﻿Shader "UniGame/Spine/SkeletonGraphics/WaveCloth"
 {
 	Properties
 	{

@@ -1,4 +1,4 @@
-namespace Taktika.Rendering.Runtime.Silhouette
+namespace UniGame.Rendering.Runtime.Silhouette
 {
     using UnityEngine;
     using UnityEngine.UI;

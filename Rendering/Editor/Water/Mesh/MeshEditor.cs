@@ -1,4 +1,4 @@
-﻿namespace Taktika.Rendering.Editor.Water.Mesh
+﻿namespace UniGame.Rendering.Editor.Water.Mesh
 {
     using System;
     using System.Collections.Generic;

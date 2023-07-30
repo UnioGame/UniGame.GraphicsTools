@@ -1,4 +1,4 @@
-﻿namespace Taktika.Rendering.Editor.Water.Mesh.Abstract
+﻿namespace UniGame.Rendering.Editor.Water.Mesh.Abstract
 {
     using Runtime.Water;
 

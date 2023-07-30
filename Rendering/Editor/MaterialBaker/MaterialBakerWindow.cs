@@ -1,4 +1,4 @@
-﻿namespace Taktika.Rendering.Editor.ShaderBaker
+﻿namespace UniGame.Rendering.Editor.ShaderBaker
 {
     using System.IO;
     using Sirenix.OdinInspector.Editor;

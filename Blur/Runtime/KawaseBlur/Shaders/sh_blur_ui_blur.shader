@@ -56,8 +56,8 @@ Shader "UniGame/URP/UI/Blur/UIKawaseBlur"
 			#pragma multi_compile_local _ UNITY_UI_ALPHACLIP
 
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
-			#include "Assets/UniGame.Rendering/Runtime/Include/Core.hlsl"
-			#include "Assets/UniGame.Rendering/Runtime/Include/UI.hlsl"
+			#include "./../../../../Rendering/Runtime/Include/Core.hlsl"
+			#include "./../../../../Rendering/Runtime/Include/UI.hlsl"
 
 			struct appdata_t
 			{

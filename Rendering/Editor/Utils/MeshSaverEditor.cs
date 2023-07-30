@@ -1,4 +1,4 @@
-﻿namespace Taktika.Rendering.Editor.Utils
+﻿namespace UniGame.Rendering.Editor.Utils
 {
     using UnityEditor;
     using UnityEngine;

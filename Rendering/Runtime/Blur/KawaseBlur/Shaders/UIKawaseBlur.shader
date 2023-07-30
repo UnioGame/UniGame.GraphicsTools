@@ -1,4 +1,4 @@
-Shader "Taktika/URP/UI/Blur/UIKawaseBlur"
+Shader "UniGame/URP/UI/Blur/UIKawaseBlur"
 {
     Properties
     {
@@ -116,5 +116,5 @@ Shader "Taktika/URP/UI/Blur/UIKawaseBlur"
 		ENDCG
 		}
     }
-	CustomEditor "Taktika.Rendering.Editor.Blur.KawaseBlur.UIKawaseBlurShaderEditor"
+	CustomEditor "UniGame.Rendering.Editor.Blur.KawaseBlur.UIKawaseBlurShaderEditor"
 }

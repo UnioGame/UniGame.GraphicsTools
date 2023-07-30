@@ -1,4 +1,4 @@
-﻿namespace Taktika.Rendering.Editor.Utils
+﻿namespace UniGame.Rendering.Editor.Utils
 {
     using System;
     using System.Runtime.CompilerServices;

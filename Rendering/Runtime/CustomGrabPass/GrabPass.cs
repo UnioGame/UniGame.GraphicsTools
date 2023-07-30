@@ -1,4 +1,4 @@
-﻿namespace Taktika.Rendering.Runtime.CustomGrabPass
+﻿namespace UniGame.Rendering.Runtime.CustomGrabPass
 {
     using UnityEngine;
     using UnityEngine.Rendering;

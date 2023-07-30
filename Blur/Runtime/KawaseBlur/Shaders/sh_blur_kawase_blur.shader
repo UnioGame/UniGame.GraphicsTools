@@ -19,7 +19,7 @@ Shader "UniGame/URP/Blur/KawaseBlur"
             #pragma target 2.0
 
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
-			#include "Assets/UniGame.Rendering/Runtime/Include/Core.hlsl"
+			#include "./../../../../Rendering/Runtime/Include/Core.hlsl"
 
             struct appdata
             {

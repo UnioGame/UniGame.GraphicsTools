@@ -1,4 +1,4 @@
-﻿namespace Taktika.Rendering.Editor.Water.Depth
+﻿namespace UniGame.Rendering.Editor.Water.Depth
 {
     using Abstract;
     using UnityEditor;

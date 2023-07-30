@@ -1,4 +1,4 @@
-﻿namespace Taktika.Rendering.Editor.Water
+﻿namespace UniGame.Rendering.Editor.Water
 {
     using System.IO;
     using Depth;

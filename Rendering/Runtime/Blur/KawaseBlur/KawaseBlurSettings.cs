@@ -1,4 +1,4 @@
-namespace Taktika.Rendering.Runtime.Blur.KawaseBlur
+namespace UniGame.Rendering.Runtime.Blur.KawaseBlur
 {
     using System;
     using UnityEngine;

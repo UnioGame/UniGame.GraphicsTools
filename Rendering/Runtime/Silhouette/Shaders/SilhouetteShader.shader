@@ -1,4 +1,4 @@
-﻿Shader "Taktika/URP/UI/SilhouetteShader"
+﻿Shader "UniGame/URP/UI/SilhouetteShader"
 {
     Properties
     {
@@ -175,5 +175,5 @@
             ENDCG
         }
     }
-    CustomEditor "Taktika.Rendering.Editor.Silhouette.SilhouetteShaderEditor"
+    CustomEditor "UniGame.Rendering.Editor.Silhouette.SilhouetteShaderEditor"
 }

@@ -1,4 +1,4 @@
-﻿namespace Taktika.Rendering.Editor.Water.Depth.Abstract
+﻿namespace UniGame.Rendering.Editor.Water.Depth.Abstract
 {
     using Sirenix.Utilities.Editor;
     using UnityEditor;

@@ -1,4 +1,4 @@
-﻿namespace Taktika.Rendering.Runtime.Water.Triangulator
+﻿namespace UniGame.Rendering.Runtime.Water.Triangulator
 {
     using UnityEngine;
 
