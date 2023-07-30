@@ -1,0 +1,19 @@
+{
+    "name": "unigame.rendering.editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:984938e248f4b433792475ed4b3244b5",
+        "GUID:2796129a6c23eb84a8181f62bf7332f1"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
