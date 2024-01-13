@@ -3,10 +3,13 @@
     using System.Collections.Generic;
     using Abstract;
     using Runtime.Water;
-    using Sirenix.Utilities.Editor;
     using UnityEditor;
     using UnityEngine;
-
+    
+#if ODIN_INSPECTOR
+    using Sirenix.Utilities.Editor;
+#endif
+    
     public class AddHoleManipulator : MeshManipulator
     {
         private readonly Water _water;
@@ -23,6 +26,7 @@
 
         public override void DrawInspector()
         {
+#if ODIN_INSPECTOR
             SirenixEditorGUI.BeginBox(new GUIContent("Hole Editor"));
             {
                 IsEnabled = GUILayout.Toggle(IsEnabled, new GUIContent("Enable Hole Drawing"), EditorStyles.miniButton);
@@ -32,6 +36,7 @@
                 }
             }
             SirenixEditorGUI.EndBox();
+#endif
         }
 
         public override int Handle(WaterMesh waterMesh, int selectedVertex)

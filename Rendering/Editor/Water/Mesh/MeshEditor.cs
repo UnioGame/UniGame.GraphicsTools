@@ -5,9 +5,12 @@
     using System.Linq;
     using Abstract;
     using Runtime.Water;
-    using Sirenix.Utilities.Editor;
     using UnityEngine;
 
+#if ODIN_INSPECTOR
+    using Sirenix.Utilities.Editor;
+#endif
+    
     public class MeshEditor
     {
         private readonly Water  _water;
@@ -25,6 +28,7 @@
 
         public bool DrawMeshPanel()
         {
+#if ODIN_INSPECTOR
             SirenixEditorGUI.BeginBox(new GUIContent("Mesh Editor"));
             {
                 if (_water.WaterMesh.IsNull)
@@ -43,7 +47,7 @@
                 }
             }
             SirenixEditorGUI.EndBox();
-
+#endif
             return _registeredManipulators.Any(x=>x.IsEnabled && x.CanChangeEnabledStatus);
         }
 

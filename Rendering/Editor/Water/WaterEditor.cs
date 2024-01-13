@@ -5,11 +5,14 @@
     using Mesh;
     using Runtime.Utils;
     using Runtime.Water;
-    using Sirenix.Utilities.Editor;
     using UniModules.Editor;
     using UnityEditor;
     using UnityEngine;
 
+#if ODIN_INSPECTOR
+    using Sirenix.OdinInspector.Editor;
+#endif
+    
     [CustomEditor(typeof(Water))]
     public class WaterEditor : Editor
     {
@@ -31,6 +34,7 @@
         {
             serializedObject.Update();
             
+#if ODIN_INSPECTOR
             SirenixEditorGUI.BeginBox(new GUIContent("Water Settings"));
             {
                 EditorGUILayout.PropertyField(_viewPositionOffsetProperty, new GUIContent("View Position Offset"));
@@ -63,6 +67,7 @@
                 GUI.enabled = true;
             }
             SirenixEditorGUI.EndBox();
+#endif
             
             _meshEditingEnabled = _meshEditor.DrawMeshPanel();
             if (_meshEditingEnabled)

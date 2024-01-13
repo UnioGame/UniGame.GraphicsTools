@@ -1,10 +1,13 @@
 ﻿namespace UniGame.Rendering.Editor.Water.Depth
 {
     using Abstract;
-    using Sirenix.Utilities.Editor;
     using UnityEditor;
     using UnityEngine;
 
+#if ODIN_INSPECTOR
+    using Sirenix.Utilities.Editor;
+#endif
+    
     public class EraserBrush : Brush
     {
         public override GUIContent GetContent()
@@ -14,11 +17,13 @@
 
         public override void DrawInspector()
         {
+#if ODIN_INSPECTOR
             SirenixEditorGUI.BeginBox(new GUIContent("Eraser Properties"));
             {
                 DrawSizeInspector();
             }
             SirenixEditorGUI.EndBox();
+#endif
         }
         
         public override void DrawHandle(Vector3 position)

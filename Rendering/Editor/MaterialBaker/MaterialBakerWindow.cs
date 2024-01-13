@@ -1,13 +1,20 @@
 ﻿namespace UniGame.Rendering.Editor.ShaderBaker
 {
     using System.IO;
-    using Sirenix.OdinInspector.Editor;
-    using Sirenix.Utilities.Editor;
+
     using UnityEditor;
     using UnityEngine;
     using UnityEngine.Rendering;
+    
+#if ODIN_INSPECTOR
+    using Sirenix.OdinInspector.Editor;
+    using Sirenix.Utilities.Editor;
+#endif
 
-    public class MaterialBakerWindow : OdinEditorWindow
+    public class MaterialBakerWindow 
+#if ODIN_INSPECTOR
+        : OdinEditorWindow
+#endif
     {
         private Material   _materialToBake;
         
@@ -20,6 +27,7 @@
 
         private TextureFormat _textureFormat = TextureFormat.RGBA32;
 
+#if ODIN_INSPECTOR
         [MenuItem("Rendering/Material Baker")]
         private static void OpenWindow()
         {
@@ -92,5 +100,6 @@
                 _isBakeProcessing = false;
             }
         }
+#endif
     }
 }

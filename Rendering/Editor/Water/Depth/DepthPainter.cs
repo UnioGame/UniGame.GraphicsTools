@@ -4,9 +4,12 @@
     using System.Collections.Generic;
     using Abstract;
     using Runtime.Water;
-    using Sirenix.Utilities.Editor;
     using UnityEditor;
     using UnityEngine;
+    
+#if ODIN_INSPECTOR
+    using Sirenix.Utilities.Editor;
+#endif
     
     public class DepthPainter
     {
@@ -33,6 +36,7 @@
 
         public bool DrawBrushPanel()
         {
+#if ODIN_INSPECTOR
             SirenixEditorGUI.BeginBox(new GUIContent("Depth Painter"));
             {
                 _depthValue = EditorGUILayout.Slider(new GUIContent("Depth"), _depthValue, 0.0f, 1.0f);
@@ -71,7 +75,7 @@
                 GUI.enabled = true;
             }
             SirenixEditorGUI.EndBox();
-
+#endif
             return _selectedBrushIndex != -1;
         }
 

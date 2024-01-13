@@ -1,9 +1,12 @@
 ﻿namespace UniGame.Rendering.Editor.Water.Depth.Abstract
 {
-    using Sirenix.Utilities.Editor;
     using UnityEditor;
     using UnityEngine;
 
+#if ODIN_INSPECTOR
+    using Sirenix.Utilities.Editor;
+#endif
+    
     public abstract class Brush
     {
         public float Size     { get; private set; } = 1.0f;
@@ -20,12 +23,14 @@
 
         public virtual void DrawInspector()
         {
+#if ODIN_INSPECTOR
             SirenixEditorGUI.BeginBox(new GUIContent("Brush Properties"));
             {
                 DrawSizeInspector();
                 DrawStrengthInspector();
             }
             SirenixEditorGUI.EndBox();
+#endif
         }
         
         public abstract GUIContent GetContent();
