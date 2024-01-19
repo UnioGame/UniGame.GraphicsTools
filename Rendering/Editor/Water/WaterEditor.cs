@@ -5,12 +5,14 @@
     using Mesh;
     using Runtime.Utils;
     using Runtime.Water;
+    
     using UniModules.Editor;
     using UnityEditor;
     using UnityEngine;
 
 #if ODIN_INSPECTOR
-    using Sirenix.OdinInspector.Editor;
+    using Sirenix.OdinInspector;
+    using Sirenix.Utilities.Editor;
 #endif
     
     [CustomEditor(typeof(Water))]
